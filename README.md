@@ -9,6 +9,7 @@
 
 
 4. As a simple EXAMPLE, the NEIGH table contains:
+  
    Bronx CB 2| 5.54 |52,246 |9,792 |Hunts Point, Longwood
 
    We want to normalize this to:
