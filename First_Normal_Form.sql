@@ -1,4 +1,4 @@
--- create a procedure to process column
+-- Create a procedure to process columns for neighborhoods.csv
 create or replace procedure split_neighborhoods(CB in varchar2, neighborhoods in varchar2)
 as 
     pre_split varchar2(400);
@@ -37,7 +37,8 @@ begin
 end;
 /
                                                        
--- b)
+-- a)
+-- it sends to the screen the whole information from the last column of NEIGH in a normalized format
 declare
     attr1 varchar(20); attr2 varchar(10); attr3 varchar(10);
     attr4 varchar(10); attr5 varchar(400);
@@ -48,17 +49,17 @@ begin
         fetch test into attr1, attr2, attr3, attr4, attr5;
         if test%found
         then      
-            --dbms_output.put_line(attr1 || ' '|| attr2 || ' ' || attr3 || ' ' 
-            --                    || ' ' || attr4 || ' ' || attr5);
-            --if attr1 = 'Bronx CB 5'  -- hint if want to do all bourogh
-            --then 
-                --dbms_output.put_line(attr1 || ' '|| attr2 || ' ' || attr3 || ' ' 
-                --                      || ' ' || attr4 || ' ' || attr5);
+            dbms_output.put_line(attr1 || ' '|| attr2 || ' ' || attr3 || ' ' 
+                                || ' ' || attr4 || ' ' || attr5);
+            if attr1 = 'Bronx CB 5'  -- hint if want to do all bourogh
+            then 
+                dbms_output.put_line(attr1 || ' '|| attr2 || ' ' || attr3 || ' ' 
+                                      || ' ' || attr4 || ' ' || attr5);
                 attr1 := substr(attr1, 0, instr(attr1, 'CB')-2);
                 split_neighborhoods(attr1, attr5);
-            --else 
-                --dbms_output.put_line('Nothing');
-            --end if;
+            else 
+                dbms_output.put_line('Nothing');
+            end if;
         else 
             exit;
         end if;
@@ -67,8 +68,8 @@ begin
 end;
 /
 
--- c)
-
+-- b)
+-- it does not send the whole information to the screen  from the last column of NEIGH in a normalized format
 declare
     attr1 varchar(20); attr2 varchar(10); attr3 varchar(10);
     attr4 varchar(10); attr5 varchar(400);
@@ -96,6 +97,6 @@ create table BOROUGH_NEIGH (
 )
 /
 
--- e) 
+-- c) 
 select borough, neigh from borough_neigh;
 /
