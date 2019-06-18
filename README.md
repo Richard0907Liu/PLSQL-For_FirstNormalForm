@@ -10,11 +10,12 @@
 
 4. As a simple EXAMPLE, the NEIGH table contains:
   
-   Bronx CB 2| 5.54 |52,246 |9,792 |Hunts Point, Longwood
+   Bronx CB 2 | 5.54 | 52,246 | 9,792 | Hunts Point, Longwood
 
    We want to normalize this to:
-   Bronx| Hunts Point
-   Bronx| Longwood
+   
+   Bronx | Hunts Point
+   Bronx | Longwood
 
 
 
